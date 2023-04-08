@@ -1,3 +1,12 @@
+// Module 6 Q-10  Create a class account that stores customer name, account number and type of account. 
+// From this derive classes curr_acc and sav_acct to make them more specific to their requirements Include necessary member functions in order to achieve the following tasks
+// // a) Accepts deposit from a customer and update balance.
+// b) Display the balance.
+// c) Compute and deposit interest.
+// d) Permit withdraws and updates the balance.
+// e) Check for the minimum balance, impose penalty, necessary and update the balance.
+
+
 #include <iostream>
 using namespace std;
 
