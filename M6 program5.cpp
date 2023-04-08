@@ -1,10 +1,12 @@
+// Module 6 Q-5  Write a Program of Two 1D Matrix Addition using Operator Overloading
+
 #include <iostream>
 using namespace std;
 //class name matrix with constructor
 class Matrix {
     private:
         int rows, cols;
-        int **data;
+        int **data;//pointer to pointer variable
 
     public:
         Matrix(int r, int c) {
@@ -16,14 +18,7 @@ class Matrix {
             }
         }
 
-        ~Matrix() {
-            for(int i=0; i<rows; i++) {
-                delete [] data[i];
-            }
-            delete [] data;
-        }
-
-        void read() {
+        void read() {//function to read elements
             cout << "Enter the elements of the matrix:\n";
             for(int i=0; i<rows; i++) {
                 for(int j=0; j<cols; j++) {
@@ -32,7 +27,7 @@ class Matrix {
             }
         }
 
-        void display() {
+        void display() {//to diplay elements
             cout << "The matrix is:\n";
             for (int i=0; i<rows; i++) {
                 for(int j=0; j<cols; j++) {
@@ -55,10 +50,10 @@ class Matrix {
 
 int main() {
     int r, c;
-    cout << "Enter size of matrices (rows and columns): ";
+    cout << "Enter size of matrices (rows and columns): ";//take user in put size of matrix
     cin >> r >> c;
 
-    Matrix m1(r, c);
+    Matrix m1(r, c); //diusplaying matrix as per value took from user
     m1.read();
     m1.display();
 
@@ -66,7 +61,7 @@ int main() {
     m2.read();
     m2.display();
 
-    Matrix sum = m1 + m2;
+    Matrix sum = m1 + m2;//formulation of martix
     cout << "\nAddition of matrices:\n";
     sum.display();
 
