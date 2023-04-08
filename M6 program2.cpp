@@ -1,3 +1,15 @@
+// //module6 Q-2  Define a class to represent lecture details. Include the following members and the program should handle at least details of 5 lecturer.
+// Data members:
+// a) Name of the lecturer
+// b) Name of the subject
+// c) Name of course
+// d) Number of lecturers
+// Data functions:
+// a) To assign initial values
+// b) To add a lecture details
+// c) To display name and lecture details
+
+
 #include <iostream>
 #include <string>
 using namespace std;
