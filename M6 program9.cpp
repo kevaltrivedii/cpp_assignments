@@ -1,25 +1,34 @@
+// Module 6 Q-9  Assume that a bank maintains two kinds of accounts for customer, 
+// one called as saving account and other as current accounts provides Simple interest and withdraw facilities but no Cheque book facility.
+// a) The current account provides Cheque book facility but no interest.
+// b) Current account holders should maintain a minimum balance and if the balance falls below this level a service charges is imposed
+
+
+
+
 #include <iostream>
 using namespace std;
 
 class Account {
     public:
-        int accno;
-        string name;
-        float balance;
+        int accno;      //account number
+        string name;    //account holder name
+        float balance;  //account balance
         
-        void deposit(float amount) {
+        void deposit(float amount) {    //function to deposit an amount in the account
             balance += amount;
             cout << "Amount of " << amount << " deposited.\n";
         }
         
-        virtual void withdraw(float amount) = 0;
+        virtual void withdraw(float amount) = 0;     //used of virtual function to call correct function ia pointer ,
+//     virtual function to withdraw money from the account
 };
 
-class Saving_Account : public Account {
+class Saving_Account : public Account {     //derived class Saving_Account from base class Account
     public:
-        float interest_rate = 0.03; // assuming 3% interest rate
+        float interest_rate = 0.03;     //interest rate assumed as 3%
         
-        void withdraw(float amount) override {
+        void withdraw(float amount) override {    //overriding the withdraw function
             if (balance - amount >= 0) {
                 balance -= amount;
                 cout << "Amount of " << amount << " withdrawn.\n";
@@ -28,19 +37,20 @@ class Saving_Account : public Account {
             }
         }
         
-        void add_interest() {
+        void add_interest() {   //function to add interest to account balance
             balance *= (1 + interest_rate);
             cout << "Interest added to account.\n";
         }
 };
 
-class Current_Account : public Account {
+class Current_Account : public Account {   //derived class Current_Account from base class Account
     public:
-        float minimum_balance = 500; // assuming Rs. 500 as minimum balance
-        float service_charge = 50; // assuming Rs. 50 as service charge
+        float minimum_balance = 500;    //minimum balance assumed as Rs. 500
+        float service_charge = 50;      //service charge assumed as Rs. 50
         
-        void withdraw(float amount) override {
-            if (balance - amount >= minimum_balance) {
+        void withdraw(float amount) override {    //overriding the withdraw function
+            if (balance - amount >= minimum_balance) { 
+            //checking if the withdrawal amount exceeds the minimum balance
                 balance -= amount;
                 cout << "Amount of " << amount << " withdrawn.\n";
             } else {
@@ -54,40 +64,44 @@ class Current_Account : public Account {
 };
 
 int main() {
-    Saving_Account saver;
-    saver.accno = 1001;
-    saver.name = "John";
-    saver.balance = 5000;
+    Saving_Account saver;   //creating an instance of Saving_Account class
+    saver.accno = 1001;     //setting account number
+    saver.name = "John";    //setting account holder name
+    saver.balance = 5000;   //setting initial account balance
     
+    //displaying details of the account before performing any operation
     cout << "\nSaving Account\n";
     cout << "---------------\n";
     cout << "Account number: " << saver.accno << endl;
     cout << "Account holder name: " << saver.name << endl;
     cout << "Account balance: " << saver.balance << endl;
     
-    saver.deposit(2000);
-    saver.add_interest();
-    saver.withdraw(3000);
+    saver.deposit(2000);    //depositing Rs. 2000
+    saver.add_interest();   //adding interest to account balance
+    saver.withdraw(3000);   //withdrawing Rs. 3000
     
+    //displaying updated account balance after performing above operations
     cout << "\nUpdated account balance: " << saver.balance << endl;
     
     
-    Current_Account current;
-    current.accno = 2001;
-    current.name = "Jane";
-    current.balance = 3000;
+    Current_Account current;    //creating an instance of Current_Account class
+    current.accno = 2001;       //setting account number
+    current.name = "Jane";      //setting account holder name
+    current.balance = 3000;     //setting initial account balance
     
+    //displaying details of the account before performing any operation
     cout << "\nCurrent Account\n";
     cout << "----------------\n";
     cout << "Account number: " << current.accno << endl;
     cout << "Account holder name: " << current.name << endl;
     cout << "Account balance: " << current.balance << endl;
     
-    current.deposit(1000);
-    current.withdraw(1500); // should pass
-    current.withdraw(4000); // should fail and apply service charge
+    current.deposit(1000);          //depositing Rs. 1000
+    current.withdraw(1500);         //withdrawing Rs. 1500,
+    current.withdraw(4000);         //withdrawing Rs. 4000, 
     
+    //displaying updated account balance after performing above operations
     cout << "\nUpdated account balance: " << current.balance << endl;
 
-    return 0;
+    return 0;   
 }
