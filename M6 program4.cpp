@@ -1,3 +1,6 @@
+//Module 6 Q-4  Write a program to find the multiplication values and the cubic values using inline function.
+
+
 #include <iostream>
 using namespace std;
 
