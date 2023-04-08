@@ -1,3 +1,5 @@
+// Module 7 Q 1 Create an example of use delete and new operator.
+
 #include <iostream>
 
 int main() {
